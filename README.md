@@ -17,13 +17,17 @@ Minecraft 正版验证Token用于验证您是否为正版验证。
 以下是其内容即填写格式：
 ```json
 {
-    "user": {
-        "name": "<您的Minecraft档案名>",
-        "uuid": "<您的Minecraft UUID>"
-    },
-    "acc_token": "<您的登录token>",
-    "ref_token": "<您的刷新token>",
-    "gameVersions": ["<您要启动的游戏版本，如1.20.4>，可以有多个值，程序会请求选择"],
+    "user": [
+        {
+            "name": "<您的Minecraft档案名>",
+            "uuid": "<您的Minecraft UUID>",
+            "acc_token": "<您的登录token>",
+            "ref_token": "<您的刷新token>"
+        }
+    ],
+    "gameVersions": [
+        "<您要启动的游戏版本，如1.20.4>，可以有多个值，程序会请求选择"
+        ],
     "Dirs": {
         "versionDir": "<您要启动的Minecraft版本文件夹所在的目录>",
         "assetsDir": "<您的assets文件夹所在的目录>",
@@ -56,12 +60,20 @@ Minecraft 正版验证Token用于验证您是否为正版验证。
 不出意外的话，您现在的`tokens.json`内容应该大致为以下内容（`gameVersions`中的版本可能不一样）：
 ```json
 {
-    "user": {
-        "name": "YIJANG",
-        "uuid": "a86efb5f12654efdb5fc94a6ce98d62d"
-    },
-    "acc_token": "",
-    "ref_token": "",
+    "user": [
+        {
+            "name": "YIJANG",
+            "uuid": "a86efb5f12654efdb5fc94a6ce98d62d",
+            "acc_token": "",
+            "ref_token": ""
+        },
+        {
+            "name": "<您的第二个账号名>",
+            "uuid": "<您的第二个账号名的UUID>",
+            "acc_token": "",
+            "ref_token": ""
+        }
+    ],
     "gameVersions": [
         "1.21.1",
         "1.21.10",

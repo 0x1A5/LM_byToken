@@ -1,19 +1,39 @@
 import requests
 
+cid = [
+    "00000000402b5328",
+    "fe72edc2-3a6f-4280-90e8-e2beb64ce7e1"
+    ]
+
+def secretStr(string):
+    a = string[0:2]
+    b = string[len(string)-2:len(string)]
+    return a + "*" * (len(string)-4) + b
+
 def refreshtoken(re_token):
     Reurl = "https://login.live.com/oauth20_token.srf"
     headers = {
         "Content-Type": "application/x-www-form-urlencoded",
     }
-    cid = "00000000402b5328"
-    data1 = {
-        "client_id": cid,
-        "refresh_token": re_token,
-        "grant_type": "refresh_token",
-        "scope": "XboxLive.signin offline_access"
-    }
-    res = requests.post(Reurl, data=data1, headers=headers)
-    return res.json()["access_token"], res.json()["refresh_token"]
+    _cid = cid.copy()
+    for i in _cid:
+        try:
+            data = {
+                "client_id": i,
+                "grant_type": "refresh_token",
+                "refresh_token": re_token,
+                "redirect_uri": "https://login.live.com/oauth20_desktop.srf",
+                "scope": "XboxLive.signin offline_access",
+            }
+            res = requests.post(Reurl, data=data, headers=headers)
+            acc_ = res.json()["access_token"]
+            ref_ = res.json()["refresh_token"]
+            print("[Gtoken: def: refreshtoken] Used the Client ID:", secretStr(i), end="\t\t\t\t\t\t\t\t\t\t\t\r")
+            return acc_, ref_
+        except Exception:
+            print(f"[Gtoken: def: refreshtoken] The Client ID: {secretStr(i)}, is not the truth.", end="\t\t\t\t\t\t\t\t\t\t\t\r")
+            cid.remove(i)
+            continue
 
 
 # microsoft OAuth2 Token
@@ -22,14 +42,14 @@ def get_microsoft_token(code):
     headers = {
     "Content-Type": "application/x-www-form-urlencoded",
     }
-    cid = "00000000402b5328"
     data = {
-        "client_id": cid,
+        "client_id": cid[0],
         "code": code,
         "grant_type": "authorization_code",
         "redirect_uri": "https://login.live.com/oauth20_desktop.srf"
     }
     response = requests.post(url, data=data, headers=headers)
+    print("[Gtoken: def: get_microsoft_token] Used the Client ID:", secretStr(cid[0]), end="\t\t\t\t\t\t\t\t\t\t\t\r")
     return response.json()["access_token"], response.json()["refresh_token"]
 
 
