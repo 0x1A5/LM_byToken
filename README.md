@@ -1,3 +1,5 @@
+* 非该功能的最佳实现代码，请勿过度评判。
+
 # LM_byToken (Launch Minecraft by Token / 通过Token启动正版Minecraft)
 此工具可以获取您的Minecraft正版登录Token并启动Minecraft。<br>
 ## 什么是 Minecraft 访问令牌？
