@@ -54,4 +54,6 @@ class Launch:
         self.bat_file.close()
 
         system(".\Launch\launch.bat")
+
+        
         
