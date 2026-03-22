@@ -71,7 +71,7 @@ Minecraft 正版验证Token用于验证您是否为正版验证。
         },
         {
             "name": "<您的第二个账号名>",
-            "uuid": "<您的第二个账号名的UUID>",
+            "uuid": "<您的第二个账号的UUID>",
             "acc_token": "",
             "ref_token": ""
         }
