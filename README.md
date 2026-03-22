@@ -111,7 +111,7 @@ https://login.live.com/oauth20_desktop.srf?code=......
     "gettoken_thenEchotoken": false,
     "launch_thenRefreshToken": false,
     "always_refreshToken": true,
-    "launch_thenCleanbat": false
+    "launch_thenCleanbat": true
 }
 ```
 - 其中，`true`和`false`为各个参数有且仅有的两个参数选项，分别表示“开”和“关”，代表其对应的选项的开关状态。
